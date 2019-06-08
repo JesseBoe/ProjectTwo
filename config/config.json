@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": " ",
-    "database": "exampledb",
+    "database": "nannies_db",
     "host": "localhost",
     "dialect": "mysql"
   },
