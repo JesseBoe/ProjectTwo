@@ -42,5 +42,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL
     }
   });
+
+  Nanny.associate = function(models) {
+    // Associating Nanny with Posts
+    // When an Nanny is deleted, also delete any associated Posts
+    Nanny.hasMany(models.Post, {
+      onDelete: "cascade"
+    });
+  };
+
   return Nanny;
 };
