@@ -1,12 +1,12 @@
 var db = require("../models");
 
-const authCheck = (req, res, next) => {
-  if (!req.user) {
-    res.redirect('/');
-  } else {
-    next();
-  }
-}
+// var authCheck = function(req, res, next) {
+//   if (!req.user) {
+//     res.redirect("/");
+//   } else {
+//     next();
+//   }
+// };
 
 module.exports = function(app) {
   // Load index page
