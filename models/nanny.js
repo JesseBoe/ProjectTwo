@@ -1,11 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Nanny = sequelize.define("Nanny", {
-    authenticationId: {
+    // This column store the information from the user input: Are you Nanny or Family.
+    WhoAreYou: {
+      //Nanny or Family
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
@@ -42,5 +41,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DECIMAL
     }
   });
+
+  Nanny.associate = function(models) {
+    // Associating Nanny with Posts
+    // When an Nanny is deleted, also delete any associated Posts
+    Nanny.hasMany(models.Post, {
+      onDelete: "cascade"
+    });
+  };
+
   return Nanny;
 };
