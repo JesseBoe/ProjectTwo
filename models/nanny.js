@@ -1,11 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Nanny = sequelize.define("Nanny", {
-    authenticationId: {
+    // This column store the information from the user input: Are you Nanny or Family.
+    WhoAreYou: {
+      //Nanny or Family
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
