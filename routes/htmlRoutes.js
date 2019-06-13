@@ -19,6 +19,15 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/sign-up", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("sign-up", {
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
   //This is an example of enforcing a user to be logged in. If not logged in
   //the user is redirected to root
 
