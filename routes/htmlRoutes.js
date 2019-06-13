@@ -11,6 +11,25 @@ module.exports = function(app) {
     });
   });
 
+<<<<<<< HEAD
+=======
+  app.get("/sign-up", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("sign-up", {
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
+  //This is an example of enforcing a user to be logged in. If not logged in
+  //the user is redirected to root
+
+  // app.get("/MyProfile", authCheck, (req, res) => {
+  //   res.render("profile");
+  // })
+
+>>>>>>> refs/remotes/origin/master
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(
