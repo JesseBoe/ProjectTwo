@@ -987,4 +987,74 @@ input[type="radio"]{
 >>>>>>> refs/remotes/origin/master
 =======
 }
+<<<<<<< HEAD
 >>>>>>> parent of 3917cbd... Revert "Merge pull request #18 from JesseBoe/passport"
+=======
+
+
+.mainpage_narrative {
+  font-size: 16px; 
+  color: #EE4C7C; 
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: oblique;
+}
+
+.sign_up_box {
+  width: 600px;
+  height: 300px;
+  /* padding: 10px;
+  margin-left: 250px; */
+  border: 2px solid #fff;
+  border-radius: 15px;
+  background: rgb(255, 255, 255, 0.7);
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-150px; /* this is half the height of your div*/  
+  margin-left:-300px; /*this is half of width of your div*/
+}
+
+.sign_up_heading{
+  color: #123C69;
+  /* margin-top: 50px;
+  margin-left: 10px;
+  margin-bottom: 50px; */
+  position:absolute;
+  top:30px;
+  left:53%;
+}
+
+.question{
+  color: #706f6f;
+  margin:  10px;
+  padding: 15px;
+  padding-left: 5px;
+  margin-left: 5px;
+  margin-top: 25px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.answer {
+  color: #000000;
+  margin-left:  20px;
+  margin-top: 25px;
+  /* opacity: 0.6; */
+  padding: 15px;
+  font-size: 120%;
+  height: 80px;
+}
+
+input[type="radio"]{
+  margin: 0 10px 0 80px;
+}
+
+.next{
+  background-color: rgb(235, 112, 149);
+  width: 300px;
+  height: 40px;
+  border-radius: 30px;
+  margin-left: 135px;
+  margin-top: 20px;
+}
+>>>>>>> origin

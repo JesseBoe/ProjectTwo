@@ -21,7 +21,10 @@ module.exports = function(app) {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> origin
   app.get("/sign-up", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("sign-up", {
@@ -31,8 +34,11 @@ module.exports = function(app) {
     });
   });
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 3917cbd... Revert "Merge pull request #18 from JesseBoe/passport"
+=======
+>>>>>>> origin
   //This is an example of enforcing a user to be logged in. If not logged in
   //the user is redirected to root
 
