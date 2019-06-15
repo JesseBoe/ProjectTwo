@@ -1,4 +1,5 @@
 var db = require("../models");
+var distance = require("../scripts/distance");
 
 module.exports = function(app) {
   // Get all parents
@@ -13,6 +14,10 @@ module.exports = function(app) {
     db.Parent.create(req.body).then(function(dbParent) {
       res.json(dbParent);
     });
+  });
+
+  app.get("/api/distance/", function(req, res) {
+    res.json({ distance: distance(req.body.zip1, req.body.zip2) });
   });
 
   // Delete an parent by id

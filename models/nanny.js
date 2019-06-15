@@ -4,35 +4,32 @@ module.exports = function(sequelize, DataTypes) {
     WhoAreYou: {
       //Nanny or Family
       type: DataTypes.STRING,
-      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: [1]
       }
     },
+    googleId: {
+      type: DataTypes.STRING
+    },
     // The BLOB datatype allows you to insert data both as strings and as buffers.
     profilePicture: {
-      type: DataTypes.BLOB,
-      allowNull: false
+      type: DataTypes.BLOB
     },
     skillsCerts: {
       type: DataTypes.TEXT,
-      allowNull: false,
       len: [1]
     },
     location: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: [1]
       }
     },
     bio: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: [1]
       }

@@ -17,4 +17,16 @@ function getDistanceInMiles(zip, zip2) {
   });
 }
 
+// function getAllCloseBy(loc) {
+//   db.Nanny.findAll({}).then(function(list) {
+//     var closeList = [];
+//     list.forEach(function(element) {
+//       if (getDistanceInMiles(loc, element.location) < 40) {
+//         closeList.push(element);
+//       }
+//     });
+//     return closeList;
+//   });
+// }
+
 module.exports = getDistanceInMiles;

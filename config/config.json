@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "Tamil1963",
+    "password": "pass",
     "database": "nannies_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "pass",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
