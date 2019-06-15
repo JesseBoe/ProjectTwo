@@ -42,8 +42,6 @@ passport.use(
             googleId: profile.id,
             name: profile.displayName
           }).then(function(newUser) {
-            console.log("We got here");
-            console.log(newUser);
             done(null, newUser);
           });
         }

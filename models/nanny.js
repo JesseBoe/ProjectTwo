@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     // This column store the information from the user input: Are you Nanny or Family.
     WhoAreYou: {
       //Nanny or Family
-      type: DataTypes.STRING,
+      type: DataTypes.STRING
     },
     name: {
       type: DataTypes.STRING,
