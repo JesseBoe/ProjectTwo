@@ -50,6 +50,10 @@ module.exports = function(sequelize, DataTypes) {
     },
     basePay: {
       type: DataTypes.DECIMAL
+    },
+    hasFinishedSingUp: {
+      type: DataTypes.STRING,
+      defaultValue: false
     }
   });
 
