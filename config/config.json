@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "catolica0225",
     "database": "nannies_db",
     "host": "localhost",
     "dialect": "mysql"

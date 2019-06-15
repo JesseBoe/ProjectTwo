@@ -10,8 +10,7 @@ module.exports = function(app) {
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Author
     db.Post.findAll({
-      include: [db.Nanny],
-      include: [db.Parent]
+      include: [db.Nanny]
     }).then(function(dbPost) {
       res.json(dbPost);
     });

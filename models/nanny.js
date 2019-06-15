@@ -1,10 +1,21 @@
 module.exports = function(sequelize, DataTypes) {
   var Nanny = sequelize.define("Nanny", {
     // This column store the information from the user input: Are you Nanny or Family.
-    WhoAreYou: {
-      //Nanny or Family
+    nanny: {
+      //Nanny or Not
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    googleId: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true
+      }
     },
     name: {
       type: DataTypes.STRING,
@@ -23,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       len: [1]
     },
-    location: {
+    zipCode: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -31,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]
@@ -45,9 +56,8 @@ module.exports = function(sequelize, DataTypes) {
   Nanny.associate = function(models) {
     // Associating Nanny with Posts
     // When an Nanny is deleted, also delete any associated Posts
-    Nanny.hasMany(models.Post, {
-      onDelete: "cascade"
-    });
+    Nanny.belongsToMany(models.Days, { through: "DaysNannies" });
+    // {onDelete: "cascade"}
   };
 
   return Nanny;

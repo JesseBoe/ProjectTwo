@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Parent = sequelize.define("Parent", {
+    parent: {
+      //FAMILY
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -12,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BLOB,
       allowNull: false
     },
-    location: {
+    ZipCode: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -20,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     bio: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]
