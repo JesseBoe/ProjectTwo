@@ -476,6 +476,7 @@ h6 {
   background-color: #fff;
   position: relative;
   padding: 0px;
+  /* margin-top: 3px; */
   height: 64px;
 }
 
@@ -878,15 +879,16 @@ fieldset:disabled a.btn {
 
 #parent-signup, 
 #sitter-signup {
-  background-color: #e3e2df ;
-  color:  #AC3B61;
-  margin-top: 15px;
-  margin-right: 10px;
+  background-color: #e3e2df !important;
+  color:  #AC3B61 !important;
+  margin-top: 15px !important;
+  margin-right: 10px !important;
+  text-transform: capitalize;
 }
 
 #parent-signup.btn-primary:hover,
 #sitter-signup.btn-primary:hover {
-  border-color: #AC3B61;
+  border-color: #AC3B61 !important;
 }
 
 .mainpage_heading {
@@ -955,32 +957,150 @@ fieldset:disabled a.btn {
   padding: 15px;
   padding-left: 5px;
   margin-left: 5px;
-  margin-top: 25px;
+  margin-top: 15px;
   text-align: center;
   font-weight: 500;
 }
 
 .answer {
   color: #000000;
-  margin-left:  20px;
-  margin-top: 25px;
+  /* margin-left:  20px; */
+  margin-top: 10px;
   /* opacity: 0.6; */
-  padding: 15px;
+  padding: 5px;
+  padding-top: 0px;
   font-size: 120%;
   height: 80px;
+  text-align: center;
 }
 
 .sign-up-radio {
   margin: 0 10px 0 80px;
 }
 
-.next{
-  background-color: rgb(235, 112, 149);
-  width: 300px;
+.next,
+.continue{
+  background-color: rgb(235, 112, 149) !important;
+  width: 250px;
   height: 40px;
   border-radius: 30px;
-  margin-left: 135px;
+  margin-left: 145px;
   margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.next:hover,
+.next:focus,
+.next:active
+.next:active:focus,
+.next:active.focus,
+.next:not(:disabled):not(.disabled):active,
+.continue:hover,
+.continue:focus,
+.continue:active
+.continue:active:focus,
+.continue:active.focus,
+.continue:not(:disabled):not(.disabled):active
+{ 
+  border-color: #EDFEF3 !important;
+  color:rgb(235, 112, 149) !important;
+  background-color: #EDFEF3 !important;
+}
+
+.expandingArea {
+  position: relative;
+  /* border: 1px solid #888; */
+  background: #fff;
+}
+
+.expandingArea > textarea,
+.expandingArea > pre {
+  /* padding: 5px; */
+  background: transparent;
+  font: 400 13px/16px helvetica, arial, sans-serif;
+  /* Make the text soft-wrap */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.textarea {
+  background-color: #fff !important;
+}
+
+.expandingArea > textarea {
+  /* The border-box box model is used to allow
+   * padding whilst still keeping the overall width
+   * at exactly that of the containing element.
+   */
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  /* This height is used when JS is disabled */
+  height: 80px;
+}
+
+.expandingArea.active > textarea {
+  /* Hide any scrollbars */
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* Remove WebKit user-resize widget */
+  resize: none;
+}
+
+.expandingArea > pre {
+  display: none;
+}
+.expandingArea.active > pre {
+  display: block;
+  /* Hide the text; just using it for sizing */
+  visibility: hidden;
+}
+
+.slidecontainer {
+  width: 70%;
+  margin-left: 90px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 70%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #123C69;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #123C69;
+  cursor: pointer;
 }
 #mornAftnLabel{
   align-self:left !important;
