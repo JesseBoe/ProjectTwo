@@ -19,9 +19,9 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/search", function(req, res) {
+  app.get("/sign-up", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
-      res.render("searchResults", {
+      res.render("sign-up", {
         msg: "Welcome!",
         examples: dbExamples
       });

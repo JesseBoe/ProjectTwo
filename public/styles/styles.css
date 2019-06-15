@@ -78,20 +78,36 @@ body {
   text-align: left;
 }
 
-.background{ 
+.background_1{ 
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #E3E2DF;
+  background-color: #fff;
   /* background-image: url('../img/background_img.jpeg'); */
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
   opacity: 0.6;
   filter:alpha(opacity=50);
-  /* z-index: 99; */
+  z-index: -99;
+}
+
+.background_2{ 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: #fff; */
+  background-image: url('../img/background_2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
+  opacity: 0.8;
+  filter:alpha(opacity=50);
+  z-index: -99;
 }
 
 [tabindex="-1"]:focus {
@@ -455,9 +471,10 @@ h6 {
 
  /* sc-component-id: Header__HeaderWrapper-qqxel2-0 */
  .fvhnMa {
-  background-color: #E3E2DF;
+  background-color: #fff;
   position: relative;
   padding: 0px;
+  /* margin-top: 3px; */
   height: 64px;
 }
 
@@ -543,13 +560,13 @@ h6 {
 /* sc-component-id: Logo */
 .bdnhPs {
   display: inline-block;
-  background: url(../img/logo.jpeg) left center no-repeat;
+  background: url(../img/logo_4.jpeg) left center no-repeat;
   width: 250px;
   height: 64px;
   margin: 0px;
 }
 
-@media (min-width:768px) {
+@media (min-width:320px) {
   .bdnhPs {
       background-size: contain;
   }
@@ -688,7 +705,7 @@ h6 {
 
 .fwjFVr.btn-login {
   border: none;
-  color: #000;
+  color: #123C69;
   font-size: 14px;
   font-weight: 400;
   background-color: transparent;
@@ -822,12 +839,12 @@ fieldset:disabled a.btn {
 
 /* sc-component-id: Header__SignUpButton-qqxel2-2 */
 .ecnEOQ.btn-signup {
-  color: #000;
+  color: #123C69;
   font-size: 14px;
   font-weight: 400;
   background-color: transparent;
   height: auto;
-  border: 1px solid #000;
+  border: 1px solid #123C69;
   border-radius: 22px;
 }
 
@@ -860,8 +877,16 @@ fieldset:disabled a.btn {
 
 #parent-signup, 
 #sitter-signup {
-  background-color: #e3e2df ;
-  color:  #AC3B61;
+  background-color: #e3e2df !important;
+  color:  #AC3B61 !important;
+  margin-top: 15px !important;
+  margin-right: 10px !important;
+  text-transform: capitalize;
+}
+
+#parent-signup.btn-primary:hover,
+#sitter-signup.btn-primary:hover {
+  border-color: #AC3B61 !important;
 }
 
 .mainpage_heading {
@@ -889,4 +914,189 @@ fieldset:disabled a.btn {
   height: 160px;
   width: 170px;
   margin-top: 150px;
+}
+
+
+.mainpage_narrative {
+  font-size: 16px; 
+  color: #EE4C7C; 
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: oblique;
+}
+
+.sign_up_box {
+  width: 600px;
+  height: 300px;
+  /* padding: 10px;
+  margin-left: 250px; */
+  border: 2px solid #fff;
+  border-radius: 15px;
+  background: rgb(255, 255, 255, 0.7);
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-150px; /* this is half the height of your div*/  
+  margin-left:-300px; /*this is half of width of your div*/
+}
+
+.sign_up_heading{
+  color: #123C69;
+  /* margin-top: 50px;
+  margin-left: 10px;
+  margin-bottom: 50px; */
+  position:absolute;
+  top:30px;
+  left:53%;
+}
+
+.question{
+  color: #706f6f;
+  margin:  10px;
+  padding: 15px;
+  padding-left: 5px;
+  margin-left: 5px;
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.answer {
+  color: #000000;
+  /* margin-left:  20px; */
+  margin-top: 10px;
+  /* opacity: 0.6; */
+  padding: 5px;
+  padding-top: 0px;
+  font-size: 120%;
+  height: 80px;
+  text-align: center;
+}
+
+input[type="radio"]{
+  margin: 0 5px 0 10px;
+}
+
+.next,
+.continue{
+  background-color: rgb(235, 112, 149) !important;
+  width: 250px;
+  height: 40px;
+  border-radius: 30px;
+  margin-left: 145px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.next:hover,
+.next:focus,
+.next:active
+.next:active:focus,
+.next:active.focus,
+.next:not(:disabled):not(.disabled):active,
+.continue:hover,
+.continue:focus,
+.continue:active
+.continue:active:focus,
+.continue:active.focus,
+.continue:not(:disabled):not(.disabled):active
+{ 
+  border-color: #EDFEF3 !important;
+  color:rgb(235, 112, 149) !important;
+  background-color: #EDFEF3 !important;
+}
+
+.expandingArea {
+  position: relative;
+  /* border: 1px solid #888; */
+  background: #fff;
+}
+
+.expandingArea > textarea,
+.expandingArea > pre {
+  /* padding: 5px; */
+  background: transparent;
+  font: 400 13px/16px helvetica, arial, sans-serif;
+  /* Make the text soft-wrap */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.textarea {
+  background-color: #fff !important;
+}
+
+.expandingArea > textarea {
+  /* The border-box box model is used to allow
+   * padding whilst still keeping the overall width
+   * at exactly that of the containing element.
+   */
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  /* This height is used when JS is disabled */
+  height: 80px;
+}
+
+.expandingArea.active > textarea {
+  /* Hide any scrollbars */
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* Remove WebKit user-resize widget */
+  resize: none;
+}
+
+.expandingArea > pre {
+  display: none;
+}
+.expandingArea.active > pre {
+  display: block;
+  /* Hide the text; just using it for sizing */
+  visibility: hidden;
+}
+
+.slidecontainer {
+  width: 70%;
+  margin-left: 90px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 70%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #123C69;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #123C69;
+  cursor: pointer;
 }
