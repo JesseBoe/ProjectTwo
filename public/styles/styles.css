@@ -4,6 +4,8 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+
  :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -973,8 +975,8 @@ fieldset:disabled a.btn {
   text-align: center;
 }
 
-input[type="radio"]{
-  margin: 0 5px 0 10px;
+.sign-up-radio {
+  margin: 0 10px 0 80px;
 }
 
 .next {
@@ -1129,6 +1131,7 @@ input[type="radio"]{
   cursor: pointer;
 }
 
+
 .box_availability {
   height: 350px;
 }
@@ -1141,3 +1144,18 @@ input[type="radio"]{
   margin-top: 20px;
   font-size: 16px;
 }
+
+#mornAftnLabel{
+  align-self:left !important;
+}
+
+.center-content {
+  padding-left: 25%;
+}
+
+.card-img-x {
+  width: 125px;
+  height: 150px;
+  border-radius: 25% 10%;
+}
+

@@ -28,9 +28,19 @@ module.exports = function(app) {
     });
   });
 
+
   app.get("/availability", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("availability", {
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
+  app.get("/search", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("searchResults", {
         msg: "Welcome!",
         examples: dbExamples
       });
