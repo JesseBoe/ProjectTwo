@@ -26,6 +26,43 @@
   <script type="text/javascript" src="js/nannyInput.js"></script>
 
   <title>Home Page</title>
+  <link rel="stylesheet" href="/styles/css/availability-grid.css">
+  <style type="text/css">
+        html:not(.grid-added) .grid-fieldset { display:none }
+        body {
+          text-align:center;
+        }
+        #availability-grid-form {
+          max-width:42em;
+          margin-left:auto;
+          margin-right:auto;
+          width: 300px;
+        }
+        .availability-grid {
+          width:100%;
+        }
+        #console {
+          max-width:100%;
+          overflow-x:auto;
+        }
+        #a11y-prefs {
+          margin-bottom:1em;
+        }
+        #a11y-prefs {
+          display:flex;
+          justify-content:center;
+        }
+        #a11y-prefs .selection {
+          padding-top:.75em;
+        }
+      </style>
+      <script>
+        (function(){
+          var html = document.querySelector('html');
+          html.classList.remove('no-js');
+          html.classList.add('js');
+        })();
+      </script>
 </head>
 
 <body>
