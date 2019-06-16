@@ -1,13 +1,5 @@
 var db = require("../models");
 
-// var authCheck = function(req, res, next) {
-//   if (!req.user) {
-//     res.redirect("/");
-//   } else {
-//     next();
-//   }
-// };
-
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
