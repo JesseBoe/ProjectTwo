@@ -23,7 +23,7 @@ module.exports = function(app) {
     req,
     res
   ) {
-    db.Nanny.findOne({ where: { googleId: req.user } }).then(function(user) {
+    db.Nanny.findOne({ where: { googleId: req.user.googleId } }).then(function(user) {
       if (user.hasSignedUp) {
         //Existing user
         res.redirect("/");
