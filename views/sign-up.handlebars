@@ -1,15 +1,15 @@
 <div class="background_2"></div>
 <div class="Header__HeaderWrapper-qqxel2-0 fvhnMa">
-    <div class="container">
-        <div class="row">
-            <div class="col-4">
-                <a href="/" title="Ninja Nanny home" id="home-logo" class="Logo bdnhPs"></a>
-            </div>
-            <div class="Header__HeaderRight-qqxel2-3 cgFVZJ col-8">
-                <a id="login-button" href="/" class="Header__SignUpButton-qqxel2-2 ecnEOQ btn btn-signup">Sign Out</a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <a href="/" title="Ninja Nanny home" id="home-logo" class="Logo bdnhPs"></a>
+      </div>
+      <div class="Header__HeaderRight-qqxel2-3 cgFVZJ col-8">
+        <a id="login-button" href="/" class="Header__SignUpButton-qqxel2-2 ecnEOQ btn btn-signup">Sign Out</a>
+      </div>
     </div>
+  </div>
 </div>
 
 
@@ -18,21 +18,21 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-          <h1 class="sign_up_heading">Hello User!</h1>
+        <h1 class="sign_up_heading">Hello User!</h1>
       </div>
     </div>
   </div>
   <div class="container sign_up_box">
-    <div class= "row">
-      <div class="col-md-12">
-        <h3 class="question">You're here to</h3>
+    <div class="row questionRow">
+      <div class="col-md-12 question">
+        <h3>You're here to</h3>
       </div>
     </div>
-    <div class= "row">
+    <div class="row answerRow">
       <div class="col-md-12 answer">
         {{!-- <h3 class="answer">Here are the answers</h3> --}}
         <input type="radio" name="type" value="nanny" id="nanny"> Look for jobs
-        <input type="radio" name="gender" value="family" id="family"> Find sitters/ nannies
+        <input type="radio" name="type" value="family" id="family"> Find sitters/ nannies
       </div>
     </div>
     <div class="selector">
@@ -46,128 +46,330 @@
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
 
 <script type="text/javascript">
 
-  $(".next").on("click", function() {
-      signupQuestions();
+  $(".next").on("click", function () {
+    signupQuestions();
   });
 
   var nanny = document.getElementById("nanny");
   var family = document.getElementById("family");
 
   function signupQuestions() {
-      if(nanny.checked) {
-          nannyQuestions();
-      }
+    if (nanny.checked) {
+      nannyQuestions();
+    }
 
-      if(family.checked) {
-          familyQuestions();
-      }
+    if (family.checked) {
+      familyQuestions();
+    }
 
-      else if(nanny.unchecked || family.unchecked) {
-          alert("Please select an option");
-      }
+    if (!nanny.checked && !family.checked) {
+      alert("Please select an option");
+    }
   };
 
   function nannyQuestions() {
     nannySkills();
   };
 
-  
+  function familyQuestions() {
+    familySummary();
+  };
 
 
-  function nannySkills() {
-    var answer = $("<div>");
-      $(".question").empty();
+  async function questionsFrameSetup() {
+    $(".sign_up_box").css("height", "300px");
 
-      $(".question").text("Let's talk about some of the skills you're good at");
-
-      $(".answer").empty();
-
-      answer.html('<div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="math"><label class="form-check-label" for="math">Math</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="reading"><label class="form-check-label" for="reading">Reading</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="firstAid"><label class="form-check-label" for="firstAid">First Aid</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="music"><label class="form-check-label" for="music">Music</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="driving"><label class="form-check-label" for="driving">Driving</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="makingMeals"><label class="form-check-label" for="makingMeals">Making Meals</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="newbornCare"><label class="form-check-label" for="newbornCare">Newborn Care</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="foreignLanguage"><label class="form-check-label" for="foreignLanguage">Foreign Language</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="problemSolving"><label class="form-check-label" for="problemSolving">Problem Solving</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="outdoorActivities"><label class="form-check-label" for="outdoorActivities">Outdoor Activities</label></div>')
-
-      $(".answer").append(answer);
-
-      $(".next").remove();
-
-      var _continue = $("<div>").addClass("btn btn-secondary continue");
-
-        _continue.text("Continue")
-      
-      $(".selector").append(_continue);
-
-      $(".continue").on("click", function() {
-        nannySummary();
-  });
-  }
-
-  function nannySummary() {
-    var answer = $("<div>").addClass("expandingArea") ;
-
-      $(".question").empty();
-
-      $(".question").text("What would you like the families to know about you?");
-
-      $(".answer").empty();
-
-      answer.html('<pre><span></span><br></pre><textarea></textarea>')
-
-      $(".answer").append(answer);
-
-      $(".continue").on("click", function() {
-        nannyPay();
-      });
-  }
-
-function makeExpandingArea(container) {
-  var area = container.querySelector('textarea');
-  var span = container.querySelector('span');
-    if (area.addEventListener) {
-    area.addEventListener('input', function() {
-      span.textContent = area.value;
-    }, false);
-    span.textContent = area.value;
-    } else if (area.attachEvent) {
-    // IE8 compatibility
-    area.attachEvent('onpropertychange', function() {
-      span.innerText = area.value;
-    });
-    span.innerText = area.value;
+    if ( $(".questionRow")[0] ) {
+      $(".questionRow").empty();
     }
-  // Enable extra CSS
-  container.className += "active";
-}
-var areas = document.querySelectorAll('.expandingArea');
-var l = areas.length;while (l--) {
-  makeExpandingArea(areas[l]);
-}
 
-function nannyPay() {
-  var answer = $("<div>").addClass("slidecontainer") ;
+    if ( $(".answerRow")[0] ) {
+      $(".answerRow").empty();
+    } 
 
-      $(".question").empty();
+    if ( $(".selector")[0]) {
+      $(".selector").empty();
+    }
+  }
 
-      $(".question").text("What is your expected pay");
+  async function nannySkills() {
+    await questionsFrameSetup();
 
-      $(".answer").empty();
+    var question = $('<div>').addClass("col-md-12 question");
+    question.html("<h4>Let's talk about some of the skills you're good at: </h4>");
+    $(".questionRow").append(question)
 
-      answer.html('<input type="range" min="10" max="50" value="20" class="slider" id="myRange"><p style="margin-top: 10px">Base pay/hr: <span id="demo"></span></p>')
+    var answer = $('<div>').addClass("col-md-12 answer");
+    answer.html('<div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="makingMeals"><label class="form-check-label" for="makingMeals">Making Meals</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="reading"><label class="form-check-label" for="reading">Reading</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="firstAid"><label class="form-check-label" for="firstAid">First Aid</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="newbornCare"><label class="form-check-label" for="newbornCare">Newborn Care</label></div><br><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="math"><label class="form-check-label" for="math">Math</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="driving"><label class="form-check-label" for="driving">Driving</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="problemSolving"><label class="form-check-label" for="problemSolving">Problem Solving</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="music"><label class="form-check-label" for="music">Music</label></div>')
+    $(".answerRow").append(answer);
 
-      $(".answer").append(answer);
+    var btn_continue = $('<div>').addClass("btn btn-secondary continue");
+    btn_continue.text("Continue");
+    $(".selector").append(btn_continue);
 
-      var slider = document.getElementById("myRange");
-      var output = document.getElementById("demo");
-      output.innerHTML = slider.value;
+    btn_continue.on("click", function () {
+      nannySummary();
+    });
+  }
 
-      slider.oninput = function() {
-        output.innerHTML = this.value;
+  async function nannySummary() {
+    await questionsFrameSetup();
+
+    $(".sign_up_box").css("height", "350px");
+
+    var question = $('<div>').addClass("col-md-12 question");
+    question.html("<h4>What would you like the families to know about you</h4>");
+    $(".questionRow").append(question);
+
+    var answer = $('<div>').addClass("expandingArea");
+    answer.html('<pre><span></span><br></pre><textarea></textarea>')
+    answer.css("margin-bottom", "50px");
+    $(".answerRow").append(answer);
+
+    var btn_back = $("<div>").addClass("btn btn-secondary back");;
+    btn_back.text("Back")
+    $(".selector").append(btn_back);
+
+    var btn_continue = $("<div>").addClass("btn btn-secondary continue");
+    btn_continue.text("Continue");
+    $(".selector").append(btn_continue);
+
+    btn_back.on("click", function () {
+      nannySkills();
+    });
+
+    btn_continue.on("click", function () {
+      nannyPay();
+    });
+  }
+
+  async function nannyPay() {
+    await questionsFrameSetup();
+
+    var question = $('<div>').addClass("col-md-12 question");
+    question.html("<h4>What is your expected pay</h4>");
+    $(".questionRow").append(question);
+
+    var answer = $('<div>').addClass("answer slidecontainer");
+    answer.html('<input type="range" min="10" max="50" value="20" class="slider" id="myRange"><p style="margin-top: 10px">Base Pay/Hr: $ <span id="demo"></span></p>')
+    answer.css("margin-bottom", "20px");
+    $(".answerRow").append(answer);
+
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+      output.innerHTML = this.value;
+    }
+    
+    var btn_back = $("<div>").addClass("btn btn-secondary back");;
+    btn_back.text("Back")
+    $(".selector").append(btn_back);
+
+    var btn_continue = $("<div>").addClass("btn btn-secondary continue");
+    btn_continue.text("Continue");
+    $(".selector").append(btn_continue);
+
+    btn_back.on("click", function () {
+      nannySummary();
+    });
+
+    btn_continue.on("click", function () {
+      nannyAvailabiltiy();
+    });
+  }
+
+  async function nannyAvailabiltiy() {
+    await questionsFrameSetup();
+    $(".sign_up_box").css("height", "350px");
+
+    var question = $('<div>').addClass("col-md-12 question");
+    question.html("<h4>How often are you willing to babysit</h4>");
+    $(".questionRow").append(question);
+
+    var answer = $('<div>').addClass("col-md-12 answer");
+    answer.css("margin-bottom", "80px");
+    answer.load("/availability");
+    $(".answerRow").append(answer);
+
+    var btn_back = $("<div>").addClass("btn btn-secondary back");;
+    btn_back.text("Back")
+    $(".selector").append(btn_back);
+
+    var btn_continue = $("<div>").addClass("btn btn-secondary continue");
+    btn_continue.text("Continue");
+    $(".selector").append(btn_continue);
+
+    btn_back.on("click", function () {
+      nannyPay();
+    });
+
+    btn_continue.on("click", function () {
+      nannyZipLocation();
+    });
+  }
+
+  async function nannyZipLocation() {
+    await questionsFrameSetup();
+    
+    var question = $('<div>').addClass("col-md-12 question");
+    question.html("<h4>Find families near you</h4>");
+    $(".questionRow").append(question);
+
+    var answer = $('<div>').addClass("col-md-12 answer");
+    answer.html('<input id="zip" name="zip" type="text" placeholder="Enter zipcode">');
+    $(".answerRow").append(answer);
+
+    var btn_back = $("<div>").addClass("btn btn-secondary back");;
+    btn_back.text("Back")
+    $(".selector").append(btn_back);
+
+    var btn_continue = $("<div>").addClass("btn btn-secondary continue");
+    btn_continue.text("Search for Jobs");
+    $(".selector").append(btn_continue);
+
+    btn_back.on("click", function () {
+      nannyAvailabiltiy();
+    });
+
+    btn_continue.on("click", function () {
+      var isValidZip = /^\d{5}(?:-?\d{4})?$/.test($('#zip').val());
+      if (isValidZip) {
+        console.log("It works");
+        $('body').load('/search');
       }
-
       
-}
+      if (!isValidZip || answer.length == 0) {
+        alert("Please enter a valid zipcode");
+      }
+    });
+  }
+
+  async function familySummary() {
+    await questionsFrameSetup();
+
+    $(".sign_up_box").css("height", "350px");
+
+    var question = $('<div>').addClass("col-md-12 question");
+    question.html("<h4>What would you like the nannies to know about you</h4>");
+    $(".questionRow").append(question);
+
+    var answer = $('<div>').addClass("expandingArea");
+    answer.html('<pre><span></span><br></pre><textarea></textarea>')
+    answer.css("margin-bottom", "50px");
+    $(".answerRow").append(answer);
+
+    var btn_continue = $("<div>").addClass("btn btn-secondary continue");
+    btn_continue.text("Continue");
+    $(".selector").append(btn_continue);
+
+    btn_continue.on("click", function () {
+      familyPay();
+    });
+  }
+
+  async function familyPay() {
+    await questionsFrameSetup();
+
+    var question = $('<div>').addClass("col-md-12 question");
+    question.html("<h4>How much are you willing to pay</h4>");
+    $(".questionRow").append(question);
+
+    var answer = $('<div>').addClass("answer slidecontainer");
+    answer.html('<input type="range" min="10" max="50" value="20" class="slider" id="myRange"><p style="margin-top: 10px">Base Pay/Hr: $ <span id="demo"></span></p>')
+    answer.css("margin-bottom", "20px");
+    $(".answerRow").append(answer);
+
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+      output.innerHTML = this.value;
+    }
+
+    var btn_back = $("<div>").addClass("btn btn-secondary back");;
+    btn_back.text("Back")
+    $(".selector").append(btn_back);
+
+    var btn_continue = $("<div>").addClass("btn btn-secondary continue");
+    btn_continue.text("Continue");
+    $(".selector").append(btn_continue);
+
+    btn_back.on("click", function () {
+      familySummary();
+    });
+
+    btn_continue.on("click", function () {
+      familyZipLocation();
+    });
+  }
+
+  async function familyZipLocation() {
+    await questionsFrameSetup();
+    
+    var question = $('<div>').addClass("col-md-12 question");
+    question.html("<h4>Find Nannies near you</h4>");
+    $(".questionRow").append(question);
+
+    var answer = $('<div>').addClass("col-md-12 answer");
+    answer.html('<input id="zip" name="zip" type="text" placeholder="Enter zipcode">');
+    $(".answerRow").append(answer);
+
+    var btn_back = $("<div>").addClass("btn btn-secondary back");
+    btn_back.text("Back");
+    $(".selector").append(btn_back);
+
+    var btn_continue = $("<div>").addClass("btn btn-secondary continue");
+    btn_continue.text("Search Nannies");
+    $(".selector").append(btn_continue);
+
+    btn_back.on("click", function () {
+      nannyAvailabiltiy();
+    });
+
+    btn_continue.on("click", function () {
+      var isValidZip = /^\d{5}(?:-?\d{4})?$/.test($('#zip').val());
+      if (isValidZip) {
+        console.log("It works");
+        $('body').load('/search');
+      }      
+      if (!isValidZip || answer.length == 0) {
+        alert("Please enter a valid zipcode");
+      }
+    });
+  }
+
+  function makeExpandingArea(container) {
+    var area = container.querySelector('textarea');
+    var span = container.querySelector('span');
+    if (area.addEventListener) {
+      area.addEventListener('input', function () {
+        span.textContent = area.value;
+      }, false);
+      span.textContent = area.value;
+    } else if (area.attachEvent) {
+      // IE8 compatibility
+      area.attachEvent('onpropertychange', function () {
+        span.innerText = area.value;
+      });
+      span.innerText = area.value;
+    }
+    // Enable extra CSS
+    container.className += "active";
+  }
+  
+  var areas = document.querySelectorAll('.expandingArea');
+  var l = areas.length; while (l--) {
+    makeExpandingArea(areas[l]);
+  }
 
 </script>

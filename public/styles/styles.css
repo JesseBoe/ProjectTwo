@@ -328,11 +328,11 @@ button::-moz-focus-inner {
   border-style: none
 }
 
-input[type=checkbox],
+/* input[type=checkbox],
 input[type=radio] {
   box-sizing: border-box;
   padding: 0
-}
+} */
 
 input[type=date],
 input[type=datetime-local],
@@ -958,6 +958,7 @@ fieldset:disabled a.btn {
   margin-top: 15px;
   text-align: center;
   font-weight: 500;
+  font-size: 20px;
 }
 
 .answer {
@@ -976,13 +977,26 @@ input[type="radio"]{
   margin: 0 5px 0 10px;
 }
 
-.next,
-.continue{
+.next {
   background-color: rgb(235, 112, 149) !important;
   width: 250px;
   height: 40px;
   border-radius: 30px;
-  margin-left: 145px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+.continue,
+.back,
+.search{
+  background-color: rgb(235, 112, 149) !important;
+  width: 150px;
+  height: 40px;
+  border-radius: 30px;
+  margin-left: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
   text-transform: capitalize;
@@ -1000,7 +1014,19 @@ input[type="radio"]{
 .continue:active
 .continue:active:focus,
 .continue:active.focus,
-.continue:not(:disabled):not(.disabled):active
+.continue:not(:disabled):not(.disabled):active,
+.back:hover,
+.back:focus,
+.back:active
+.back:active:focus,
+.back:active.focus,
+.back:not(:disabled):not(.disabled):active,
+.search:hover,
+.search:focus,
+.search:active
+.search:active:focus,
+.search:active.focus,
+.search:not(:disabled):not(.disabled):active
 { 
   border-color: #EDFEF3 !important;
   color:rgb(235, 112, 149) !important;
@@ -1011,13 +1037,15 @@ input[type="radio"]{
   position: relative;
   /* border: 1px solid #888; */
   background: #fff;
+  width: 80%;
+  margin-left: 60px;
 }
 
 .expandingArea > textarea,
 .expandingArea > pre {
   /* padding: 5px; */
   background: transparent;
-  font: 400 13px/16px helvetica, arial, sans-serif;
+  font: 400 16px/16px helvetica, arial, sans-serif;
   /* Make the text soft-wrap */
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -1038,7 +1066,7 @@ input[type="radio"]{
           box-sizing: border-box;
   width: 100%;
   /* This height is used when JS is disabled */
-  height: 80px;
+  height: 100px;
 }
 
 .expandingArea.active > textarea {
@@ -1063,7 +1091,7 @@ input[type="radio"]{
 
 .slidecontainer {
   width: 70%;
-  margin-left: 90px;
+  margin-left: 75px;
 }
 
 .slider {
@@ -1071,7 +1099,7 @@ input[type="radio"]{
   width: 70%;
   height: 10px;
   border-radius: 5px;
-  background: #d3d3d3;
+  background: #b6b5b5;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -1099,4 +1127,17 @@ input[type="radio"]{
   border-radius: 50%;
   background: #123C69;
   cursor: pointer;
+}
+
+.box_availability {
+  height: 350px;
+}
+
+.continue_availability{
+  margin-top: 80px;
+}
+
+#zip {
+  margin-top: 20px;
+  font-size: 16px;
 }

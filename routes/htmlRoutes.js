@@ -28,6 +28,14 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/availability", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("availability", {
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
   //This is an example of enforcing a user to be logged in. If not logged in
   //the user is redirected to root
 
