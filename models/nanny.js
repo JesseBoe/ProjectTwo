@@ -53,6 +53,27 @@ module.exports = function(sequelize, DataTypes) {
     hasFinishedSingUp: {
       type: DataTypes.STRING,
       defaultValue: null
+    },
+    monday: {
+      type: DataTypes.STRING
+    },
+    tuesday: {
+      type: DataTypes.STRING
+    },
+    wednesday: {
+      type: DataTypes.STRING
+    },
+    thursday: {
+      type: DataTypes.STRING
+    },
+    friday: {
+      type: DataTypes.STRING
+    },
+    saturday: {
+      type: DataTypes.STRING
+    },
+    sunday: {
+      type: DataTypes.STRING
     }
   });
 
