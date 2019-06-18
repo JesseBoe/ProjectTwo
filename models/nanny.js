@@ -26,8 +26,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     // The BLOB datatype allows you to insert data both as strings and as buffers.
     profilePicture: {
-      type: DataTypes.BLOB,
-      allowNull: false
+      type: DataTypes.BLOB
     },
     skillsCerts: {
       type: DataTypes.TEXT,
@@ -53,7 +52,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     hasFinishedSingUp: {
       type: DataTypes.STRING,
-      defaultValue: false
+      defaultValue: null
     }
   });
 
