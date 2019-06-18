@@ -1,12 +1,12 @@
 var db = require("../models");
 
-// var authCheck = function(req, res, next) {
-//   if (!req.user) {
-//     res.redirect("/");
-//   } else {
-//     next();
-//   }
-// };
+var authCheck = function(req, res, next) {
+  if (!req.user) {
+    res.redirect("/")
+  } else {
+    next();
+  }
+}
 
 module.exports = function(app) {
   // Load index page
@@ -22,6 +22,15 @@ module.exports = function(app) {
   app.get("/sign-up", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("sign-up", {
+        msg: "Welcome!",
+        examples: dbExamples
+      });
+    });
+  });
+
+  app.get("/availability", function(req, res) {
+    db.Example.findAll({}).then(function(dbExamples) {
+      res.render("availability", {
         msg: "Welcome!",
         examples: dbExamples
       });
