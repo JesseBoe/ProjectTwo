@@ -1107,11 +1107,15 @@ fieldset:disabled a.btn {
 }
 
 .center-content {
-  padding-left: 25%;
+  padding-left: 32%;
 }
 
 .card-img-x {
   width: 125px;
   height: 150px;
   border-radius: 25% 10%;
+}
+
+.dateTime {
+  white-space: nowrap;
 }

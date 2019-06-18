@@ -63,6 +63,10 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/search/query", function(req, res) {
+    console.log(req.body);
+    res.json(obj);
+  });
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
