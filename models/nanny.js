@@ -4,15 +4,13 @@ module.exports = function(sequelize, DataTypes) {
     nanny: {
       //Nanny or Not
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      defaultValue: null
     },
     googleId: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         isEmail: true
       }
@@ -42,7 +40,6 @@ module.exports = function(sequelize, DataTypes) {
     },
     bio: {
       type: DataTypes.TEXT,
-      allowNull: false,
       validate: {
         len: [1]
       }
@@ -52,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     hasFinishedSingUp: {
       type: DataTypes.STRING,
-      defaultValue: null
+      defaultValue: false
     },
     monday: {
       type: DataTypes.STRING
