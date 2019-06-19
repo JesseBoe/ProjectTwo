@@ -27,9 +27,9 @@
 <div class="row">
     <div class="col-md-8 order-md-2">
         <div class="search">
-            <div class="container">
+            <div class="container result-container">
                 <div class="row">
-                    <div class="row" style="width: 35rem ;">
+                    {{!-- <div class="row" style="width: 35rem ;">
                         <img class="card-img-x" src="../../img/Mary_Poppins.jpg" alt="Mary" width="100" height="150">
                         <div class="col-md-8" style="float-right;">
                             <h5 class="card-title">Bio</h5>
@@ -41,7 +41,7 @@
                                 <i class="fas fa-envelope-square"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -144,54 +144,42 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
-<script>
+<script type="text/javascript">
 
-    function submit(){
+function submit() 
+{
+    var obj;
 
-    if ($("#mornAftn").checked == true) {
-    var obj = {
-      type: mornaftn,
-      monday: $("#monDay").checked,
-      tuesday: $("*tuesDay").checked,
-      wensday: $("#tuesDay").checked,
-      thursday: $("#thursDay").checked,
-      friday: $("#friDay").checked,
-      saturday: $("#saturDay").checked,
-      sunday: $("#sunDay").checked
+    var radioValue = $("input[name='drone']:checked").val();
+
+    obj = {
+        type: radioValue,
+        monday: $("#monDay").is(":checked"),
+        tuesday: $("#tuesDay").is(":checked"),
+        wensday: $("#wensDay").is(":checked"),
+        thursday: $("#thursDay").is(":checked"),
+        friday: $("#friDay").is(":checked"),
+        saturday: $("#saturDay").is(":checked"),
+        sunday: $("#sunDay").is(":checked")
     }
-  }
-  if ($("#nights").checked == true) {
-      var obj = {
-        type: nights,
-        monday: $("#monDay").checked,
-        tuesday: $("*tuesDay").checked,
-        wensday: $("#tuesDay").checked,
-        thursday: $("#thursDay").checked,
-        friday: $("#friDay").checked,
-        saturday: $("#saturDay").checked,
-        sunday: $("#sunDay").checked
-      }
-  }
-  if ($("#both").checked == true) {
-      var obj = {
-        type: both,
-        monday: $("#monDay").checked,
-        tuesday: $("*tuesDay").checked,
-        wensday: $("#tuesDay").checked,
-        thursday: $("#thursDay").checked,
-        friday: $("#friDay").checked,
-        saturday: $("#saturDay").checked,
-        sunday: $("#sunDay").checked
-      }
-  }
-  $.ajax({
-      type: "POST",
-      url: window.location.pathname + "/query",
-      data: obj,
-      dataType: JSON
-  }).then(function(data){
-      console.log(data);
-  })
+
+    console.log(obj);
+    console.log(window.location.pathname + "/query")
+
+     $.ajax({
+        type: "POST",
+        url: window.location.href + "/query",
+        data: obj,
+        dataType: "JSON"
+    }).then(function (data) {
+        console.log(data);
+        
+        for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            $('<div class= "row" style = "width: 35rem ;" > <img class="card-img-x" src=' + element.profilePicture + ' alt="" width="100" height="150"> <div class="col-md-8" style="float-right;"> <h5 class="card-title">Bio</h5> <p class="card-text">`+ element.bio + ` </p> <a href="#" class="btn btn-primary">Learn More</a> <a class="btn btn-large btn-primary logout" href="#"> <i class="fas fa-envelope-square"></i> </a> </div> </div>').appendTo($(".result-container"));
+        }
+        
+    })
 }
 
 jQuery("#submit").on("click", function(){
