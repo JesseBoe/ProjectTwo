@@ -2,7 +2,6 @@ var db = require("../models");
 var distance = require("./../scripts/distance");
 var axios = require("axios");
 
-<<<<<<< HEAD
 var authCheck = function(req, res, next) {
   if (!req.user) {
     res.redirect("/");
@@ -11,8 +10,6 @@ var authCheck = function(req, res, next) {
   }
 };
 
-=======
->>>>>>> 5932c463ca2d5a0a05d277b471e57ef1e77329a6
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
@@ -33,10 +30,6 @@ module.exports = function(app) {
     });
   });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5932c463ca2d5a0a05d277b471e57ef1e77329a6
   app.get("/availability", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("availability", {
