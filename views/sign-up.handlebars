@@ -30,8 +30,8 @@
     <div class="row answerRow">
       <div class="col-md-12 answer">
         {{!-- <h3 class="answer">Here are the answers</h3> --}}
-        <input class="sign-up-radio" type="radio" name="type" value="nanny"> Look for a job
-        <input class="sign-up-radio" type="radio" name="gender" value="family"> Find a sitter
+        <input class="sign-up-radio" type="radio" name="type" value="nanny" id="nanny"> Look for a job
+        <input class="sign-up-radio" type="radio" name="type" value="family" id="family"> Find a sitter
       </div>
     </div>
     <div class="selector">
@@ -51,13 +51,34 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
 
 <script type="text/javascript">
+var newNanny = {};
+var counter = 0;
 
   $(".next").on("click", function () {
-    signupQuestions();
+  if (counter == 0){
+      newNanny.nanny = nanny.checked
+      counter++;
+  }else if (counter == 1){
+    //skillsInfo();
+  }
+  console.log(newNanny);
+  console.log(counter);
+  
+
+  signupQuestions();
   });
 
   var nanny = document.getElementById("nanny");
   var family = document.getElementById("family");
+
+  var makingMeals = document.getElementById("makingMeals");
+  var reading = document.getElementById("reading");
+  var firstAid = document.getElementById("firstAid");
+  var newbornCare= document.getElementById("newbornCare");
+  var math= document.getElementById("math");
+  var driving= document.getElementById("driving");
+  var problemSolving= document.getElementById("problemSolving");
+  var music = document.getElementById("music");
 
   function signupQuestions() {
     if (nanny.checked) {
@@ -72,6 +93,9 @@
       alert("Please select an option");
     }
   };
+
+
+
 
   function nannyQuestions() {
     nannySkills();
@@ -106,14 +130,15 @@
     $(".questionRow").append(question)
 
     var answer = $('<div>').addClass("col-md-12 answer");
-    answer.html('<div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="makingMeals"><label class="form-check-label" for="makingMeals">Making Meals</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="reading"><label class="form-check-label" for="reading">Reading</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="firstAid"><label class="form-check-label" for="firstAid">First Aid</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="newbornCare"><label class="form-check-label" for="newbornCare">Newborn Care</label></div><br><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="math"><label class="form-check-label" for="math">Math</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="driving"><label class="form-check-label" for="driving">Driving</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="problemSolving"><label class="form-check-label" for="problemSolving">Problem Solving</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="music"><label class="form-check-label" for="music">Music</label></div>')
+    answer.html('<div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="makingMeals" value="Making Meals"><label class="form-check-label" for="makingMeals">Making Meals</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="reading" value="reading "><label class="form-check-label" for="reading">Reading</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="firstAid" value ="first Aid"><label class="form-check-label" for="firstAid">First Aid</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="newbornCare" value="NewBorn Care"><label class="form-check-label" for="newbornCare">Newborn Care</label></div><br><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="math" value="Math"><label class="form-check-label" for="math">Math</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="driving" value="Driving"><label class="form-check-label" for="driving">Driving</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="problemSolving" value="Problem Solving"><label class="form-check-label" for="problemSolving">Problem Solving</label></div><div class="form-check form-check-inline"><input type="checkbox" class="form-check-input" id="music" value="Music"><label class="form-check-label" for="music">Music</label></div>')
     $(".answerRow").append(answer);
 
     var btn_continue = $('<div>').addClass("btn btn-secondary continue");
     btn_continue.text("Continue");
     $(".selector").append(btn_continue);
 
-    btn_continue.on("click", function () {
+    btn_continue.on("click", function () {  
+      skillsInfo();
       nannySummary();
     });
   }
@@ -128,7 +153,7 @@
     $(".questionRow").append(question);
 
     var answer = $('<div>').addClass("expandingArea");
-    answer.html('<pre><span></span><br></pre><textarea></textarea>')
+    answer.html('<pre><span></span><br></pre><textarea id="bio"></textarea>')
     answer.css("margin-bottom", "50px");
     $(".answerRow").append(answer);
 
@@ -141,11 +166,13 @@
     $(".selector").append(btn_continue);
 
     btn_back.on("click", function () {
+   
       nannySkills();
     });
 
     btn_continue.on("click", function () {
-      nannyPay();
+    bio();
+    nannyPay();
     });
   }
 
@@ -178,10 +205,13 @@
     $(".selector").append(btn_continue);
 
     btn_back.on("click", function () {
+    
       nannySummary();
     });
 
     btn_continue.on("click", function () {
+      newNanny.basePay = slider.value;
+      console.log(newNanny);
       nannyAvailabiltiy();
     });
   }
@@ -208,10 +238,13 @@
     $(".selector").append(btn_continue);
 
     btn_back.on("click", function () {
+      
       nannyPay();
     });
 
     btn_continue.on("click", function () {
+
+      nannyDays();
       nannyZipLocation();
     });
   }
@@ -249,6 +282,8 @@
       if (!isValidZip || answer.length == 0) {
         alert("Please enter a valid zipcode");
       }
+      zipInfo();
+
     });
   }
 
@@ -271,6 +306,7 @@
     $(".selector").append(btn_continue);
 
     btn_continue.on("click", function () {
+      
       familyPay();
     });
   }
@@ -370,5 +406,477 @@
   var l = areas.length; while (l--) {
     makeExpandingArea(areas[l]);
   }
+
+function skillsInfo(){
+  
+   if (document.getElementById("makingMeals").checked){
+      makingMeals = document.getElementById("makingMeals").value;
+      console.log(makingMeals);
+     }else{
+       makinMeals = "";
+     };
+     if (document.getElementById("reading").checked){
+       reading= document.getElementById("reading").value;
+     }else{
+       reading= "";
+     };
+
+     if (document.getElementById("firstAid").checked){
+       firstAid= document.getElementById("firstAid").value;
+     }else{
+       firstAid= "";
+     };
+
+     if (document.getElementById("newbornCare").checked){
+       newbornCare= document.getElementById("newbornCare").value;
+     }else{
+       newbornCare= "";
+     };
+    if (document.getElementById("math").checked){
+       math= document.getElementById("math").value;
+     }else{
+       math= "";
+     };
+    if (document.getElementById("driving").checked){
+       driving= document.getElementById("driving").value;
+     }else{
+       driving= "";
+     };
+
+      if (document.getElementById("problemSolving").checked){
+       problemSolving= document.getElementById("problemSolving").value;
+     }else{
+       problemSolving= "";
+     };
+
+     if (document.getElementById("music").checked){
+      music= document.getElementById("music").value;
+     }else{
+       music= "";
+     };
+    var skills = (makingMeals +" "+ reading +" "+ firstAid +" "+ newbornCare +" "+ math +" "+ driving+" " + problemSolving +","+ music)
+    newNanny.skillsCerts = skills;
+    console.log(newNanny);
+
+};
+
+function bio() {    
+  var bio = document.getElementById("bio").value;
+    console.log(bio);
+    newNanny.bio = bio;
+    console.log(newNanny);
+};
+
+function nannyDays(){
+  if (
+  document.getElementById("avail-mon-day").checked &&
+  document.getElementById("avail-mon-night").checked &&
+  document.getElementById("avail-mon-anytime").checked
+) {
+  var monday =
+    document.getElementById("avail-mon-day").name +
+    document.getElementById("avail-mon-night").name +
+    document.getElementById("avail-mon-anytime").name;
+  newNanny.monday = monday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-mon-day").checked &&
+  document.getElementById("avail-mon-night").checked
+) {
+  var monday =
+    document.getElementById("avail-mon-day").name +
+    document.getElementById("avail-mon-night").name;
+  newNanny.monday = monday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-mon-day").checked &&
+  document.getElementById("avail-mon-anytime").checked
+) {
+  var monday =
+    document.getElementById("avail-mon-day").name +
+    document.getElementById("avail-mon-anytime").name;
+  newNanny.monday = monday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-mon-night").checked &&
+  document.getElementById("avail-mon-anytime").checked
+) {
+  var monday =
+    document.getElementById("avail-mon-night").name +
+    document.getElementById("avail-mon-anytime").name;
+  newNanny.monday = monday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-mon-day").checked) {
+  var monday = document.getElementById("avail-mon-day").name;
+  newNanny.monday = monday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-mon-night").checked) {
+  var monday = document.getElementById("avail-mon-night").name;
+  newNanny.monday = monday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-mon-anytime").checked) {
+  var monday = document.getElementById("avail-mon-anytime").name;
+  newNanny.monday = monday;
+  console.log(newNanny);
+} else {
+  var monday = "";
+  newNanny.monday = monday;
+  console.log(newNanny);
+}
+
+if (
+  document.getElementById("avail-tue-day").checked &&
+  document.getElementById("avail-tue-night").checked &&
+  document.getElementById("avail-tue-anytime").checked
+) {
+  var tuesday =
+    document.getElementById("avail-tue-day").name +
+    document.getElementById("avail-tue-night").name +
+    document.getElementById("avail-tue-anytime").name;
+  newNanny.tuesday = tuesday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-tue-day").checked &&
+  document.getElementById("avail-tue-night").checked
+) {
+  var tuesday =
+    document.getElementById("avail-tue-day").name +
+    document.getElementById("avail-tue-night").name;
+  newNanny.tuesday = tuesday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-tue-day").checked &&
+  document.getElementById("avail-tue-anytime").checked
+) {
+  var tuesday =
+    document.getElementById("avail-tue-day").name +
+    document.getElementById("avail-tue-anytime").name;
+  newNanny.tuesday = tuesday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-tue-night").checked &&
+  document.getElementById("avail-tue-anytime").checked
+) {
+  var tuesday =
+    document.getElementById("avail-tue-night").name +
+    document.getElementById("avail-tue-anytime").name;
+  newNanny.tuesday = tuesday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-tue-day").checked) {
+  var tuesday = document.getElementById("avail-tue-day").name;
+  newNanny.tuesday = tuesday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-tue-night").checked) {
+  var tuesday = document.getElementById("avail-tue-night").name;
+  newNanny.tuesday = tuesday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-tue-anytime").checked) {
+  var tuesday = document.getElementById("avail-tue-anytime").name;
+  newNanny.tuesday = tuesday;
+  console.log(newNanny);
+} else {
+  var tuesday = "";
+  newNanny.tuesday = tuesday;
+  console.log(newNanny);
+}
+
+if (
+  document.getElementById("avail-wed-day").checked &&
+  document.getElementById("avail-wed-night").checked &&
+  document.getElementById("avail-wed-anytime").checked
+) {
+  var wednesday =
+    document.getElementById("avail-wed-day").name +
+    document.getElementById("avail-wed-night").name +
+    document.getElementById("avail-wed-anytime").name;
+  newNanny.wednesday = wednesday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-wed-day").checked &&
+  document.getElementById("avail-wed-night").checked
+) {
+  var wednesday =
+    document.getElementById("avail-wed-day").name +
+    document.getElementById("avail-wed-night").name;
+  newNanny.wednesday = wednesday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-wed-day").checked &&
+  document.getElementById("avail-wed-anytime").checked
+) {
+  var wednesday =
+    document.getElementById("avail-wed-day").name +
+    document.getElementById("avail-wed-anytime").name;
+  newNanny.wednesday = wednesday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-wed-night").checked &&
+  document.getElementById("avail-wed-anytime").checked
+) {
+  var wednesday =
+    document.getElementById("avail-wed-night").name +
+    document.getElementById("avail-wed-anytime").name;
+  newNanny.wednesday = wednesday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-wed-day").checked) {
+  var wednesday = document.getElementById("avail-wed-day").name;
+  newNanny.wednesday = wednesday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-wed-night").checked) {
+  var wednesday = document.getElementById("avail-wed-night").name;
+  newNanny.wednesday = wednesday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-wed-anytime").checked) {
+  var wednesday = document.getElementById("avail-wed-anytime").name;
+  newNanny.wednesday = wednesday;
+  console.log(newNanny);
+} else {
+  var wednesday = "";
+  newNanny.wednesday = wednesday;
+  console.log(newNanny);
+}
+if (
+  document.getElementById("avail-thur-day").checked &&
+  document.getElementById("avail-thur-night").checked &&
+  document.getElementById("avail-thur-anytime").checked
+) {
+  var thursday =
+    document.getElementById("avail-thur-day").name +
+    document.getElementById("avail-thur-night").name +
+    document.getElementById("avail-thur-anytime").name;
+  newNanny.thursday = thursday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-thur-day").checked &&
+  document.getElementById("avail-thur-night").checked
+) {
+  var thursday =
+    document.getElementById("avail-thur-day").name +
+    document.getElementById("avail-thur-night").name;
+  newNanny.thursday = thursday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-thur-day").checked &&
+  document.getElementById("avail-thur-anytime").checked
+) {
+  var thursday =
+    document.getElementById("avail-thur-day").name +
+    document.getElementById("avail-thur-anytime").name;
+  newNanny.thursday = thursday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-thur-night").checked &&
+  document.getElementById("avail-thur-anytime").checked
+) {
+  var thursday =
+    document.getElementById("avail-thur-night").name +
+    document.getElementById("avail-thur-anytime").name;
+  newNanny.thursday = thursday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-thur-day").checked) {
+  var thursday = document.getElementById("avail-thur-day").name;
+  newNanny.thursday = thursday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-thur-night").checked) {
+  var thursday = document.getElementById("avail-thur-night").name;
+  newNanny.thursday = thursday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-thur-anytime").checked) {
+  var thursday = document.getElementById("avail-thur-anytime").name;
+  newNanny.thursday = thursday;
+  console.log(newNanny);
+} else {
+  var thursday = "";
+  newNanny.thursday = thursday;
+  console.log(newNanny);
+}
+if (
+  document.getElementById("avail-fri-day").checked &&
+  document.getElementById("avail-fri-night").checked &&
+  document.getElementById("avail-fri-anytime").checked
+) {
+  var friday =
+    document.getElementById("avail-fri-day").name +
+    document.getElementById("avail-fri-night").name +
+    document.getElementById("avail-fri-anytime").name;
+  newNanny.friday = friday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-fri-day").checked &&
+  document.getElementById("avail-fri-night").checked
+) {
+  var friday =
+    document.getElementById("avail-fri-day").name +
+    document.getElementById("avail-fri-night").name;
+  newNanny.friday = friday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-fri-day").checked &&
+  document.getElementById("avail-fri-anytime").checked
+) {
+  var friday =
+    document.getElementById("avail-fri-day").name +
+    document.getElementById("avail-fri-anytime").name;
+  newNanny.friday = friday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-fri-night").checked &&
+  document.getElementById("avail-fri-anytime").checked
+) {
+  var friday =
+    document.getElementById("avail-fri-night").name +
+    document.getElementById("avail-fri-anytime").name;
+  newNanny.friday = friday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-fri-day").checked) {
+  var friday = document.getElementById("avail-fri-day").name;
+  newNanny.friday = friday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-fri-night").checked) {
+  var friday = document.getElementById("avail-fri-night").name;
+  newNanny.friday = friday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-fri-anytime").checked) {
+  var friday = document.getElementById("avail-fri-anytime").name;
+  newNanny.friday = friday;
+  console.log(newNanny);
+} else {
+  var friday = "";
+  newNanny.friday = friday;
+  console.log(newNanny);
+}
+if (
+  document.getElementById("avail-sat-day").checked &&
+  document.getElementById("avail-sat-night").checked &&
+  document.getElementById("avail-sat-anytime").checked
+) {
+  var saturday =
+    document.getElementById("avail-sat-day").name +
+    document.getElementById("avail-sat-night").name +
+    document.getElementById("avail-sat-anytime").name;
+  newNanny.saturday = saturday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-sat-day").checked &&
+  document.getElementById("avail-sat-night").checked
+) {
+  var saturday =
+    document.getElementById("avail-sat-day").name +
+    document.getElementById("avail-sat-night").name;
+  newNanny.saturday = saturday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-sat-day").checked &&
+  document.getElementById("avail-sat-anytime").checked
+) {
+  var saturday =
+    document.getElementById("avail-sat-day").name +
+    document.getElementById("avail-sat-anytime").name;
+  newNanny.saturday = saturday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-sat-night").checked &&
+  document.getElementById("avail-sat-anytime").checked
+) {
+  var saturday =
+    document.getElementById("avail-sat-night").name +
+    document.getElementById("avail-sat-anytime").name;
+  newNanny.saturday = saturday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-sat-day").checked) {
+  var saturday = document.getElementById("avail-sat-day").name;
+  newNanny.saturday = saturday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-sat-night").checked) {
+  var saturday = document.getElementById("avail-sat-night").name;
+  newNanny.saturday = saturday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-sat-anytime").checked) {
+  var saturday = document.getElementById("avail-sat-anytime").name;
+  newNanny.saturday = saturday;
+  console.log(newNanny);
+} else {
+  var saturday = "";
+  newNanny.saturday = saturday;
+  console.log(newNanny);
+}
+
+if (
+  document.getElementById("avail-sun-day").checked &&
+  document.getElementById("avail-sun-night").checked &&
+  document.getElementById("avail-sun-anytime").checked
+) {
+  var sunday =
+    document.getElementById("avail-sun-day").name +
+    document.getElementById("avail-sun-night").name +
+    document.getElementById("avail-sun-anytime").name;
+  newNanny.sunday = sunday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-sun-day").checked &&
+  document.getElementById("avail-sun-night").checked
+) {
+  var sunday =
+    document.getElementById("avail-sun-day").name +
+    document.getElementById("avail-sun-night").name;
+  newNanny.sunday = sunday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-sun-day").checked &&
+  document.getElementById("avail-sun-anytime").checked
+) {
+  var sunday =
+    document.getElementById("avail-sun-day").name +
+    document.getElementById("avail-sun-anytime").name;
+  newNanny.sunday = sunday;
+  console.log(newNanny);
+} else if (
+  document.getElementById("avail-sun-night").checked &&
+  document.getElementById("avail-sun-anytime").checked
+) {
+  var sunday =
+    document.getElementById("avail-sun-night").name +
+    document.getElementById("avail-sun-anytime").name;
+  newNanny.sunday = sunday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-sun-day").checked) {
+  var sunday = document.getElementById("avail-sun-day").name;
+  newNanny.sunday = sunday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-sun-night").checked) {
+  var sunday = document.getElementById("avail-sun-night").name;
+  newNanny.sunday = sunday;
+  console.log(newNanny);
+} else if (document.getElementById("avail-sun-anytime").checked) {
+  var sunday = document.getElementById("avail-sun-anytime").name;
+  newNanny.sunday = sunday;
+  console.log(newNanny);
+} else {
+  var sunday = "";
+  newNanny.sunday = sunday;
+  console.log(newNanny);
+}
+
+ 
+};
+
+function zipInfo(){
+  var zip = document.getElementById("zip").value;
+    console.log(zip);
+    newNanny.zipCode = zip;
+    
+    newNanny.googleId = "das";
+    newNanny.email = "lizeth@uw.com"
+    newNanny.name = "vera"
+    console.log(newNanny);
+     submitNannyInfo(newNanny);
+
+}
+
+function submitNannyInfo(post) {
+      $.post("/api/nannies", post, function() {
+        // window.location.href = "/";
+      });
+    }
 
 </script>
