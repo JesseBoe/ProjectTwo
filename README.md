@@ -1,9 +1,9 @@
 # ProjectTwo
-# Nanny Ninja
+# Ninja Nanny
 
 **Finally an app that helps you locate child care easily**
 
-If you are looking for a nanny or babysitter that is willing and ready to help you out, then look no further. Our app **Nanny Ninja** will do all the work for you. Simply fill out our form if you are a parent and it will show you nannies in your area that are available during the times you are needing them. Day, night, weekends, overnight, whatever you are needing we have a nanny that is available. 
+If you are looking for a nanny or babysitter that is willing and ready to help you out, then look no further. Our app **Ninja Nanny** will do all the work for you. Simply fill out our form if you are a parent and it will show you nannies in your area that are available during the times you are needing them. Day, night, weekends, overnight, whatever you are needing we have a nanny that is available. 
 
 **Calling all Nannies**
 
