@@ -1,4 +1,5 @@
 var passport = require("passport");
+var db = require("../models");
 
 module.exports = function(app) {
   app.get("/auth/login", function(req, res) {
@@ -22,6 +23,13 @@ module.exports = function(app) {
     req,
     res
   ) {
-    res.redirect("/");
+    db.Nanny.findOne({ where: { googleId: req.user.googleId } }).then(function(user) {
+      if (user.hasSignedUp) {
+        //Existing user
+        res.redirect("/");
+      } else {
+        res.redirect("/sign-up");
+      }
+    });
   });
 };

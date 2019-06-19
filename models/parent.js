@@ -12,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    GoogleId: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     // The BLOB datatype allows you to insert data both as strings and as buffers.
     profilePicture: {
       type: DataTypes.BLOB,

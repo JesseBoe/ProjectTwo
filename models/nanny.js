@@ -4,25 +4,25 @@ module.exports = function(sequelize, DataTypes) {
     nanny: {
       //Nanny or Not
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      defaultValue: null
     },
     googleId: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         isEmail: true
       }
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: [1]
       }
+    },
+    googleId: {
+      type: DataTypes.STRING
     },
     // The BLOB datatype allows you to insert data both as strings and as buffers.
     profilePicture: {
@@ -30,19 +30,16 @@ module.exports = function(sequelize, DataTypes) {
     },
     skillsCerts: {
       type: DataTypes.TEXT,
-      allowNull: false,
       len: [1]
     },
     zipCode: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
         len: [1]
       }
     },
     bio: {
       type: DataTypes.TEXT,
-      allowNull: false,
       validate: {
         len: [1]
       }
@@ -52,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     hasFinishedSingUp: {
       type: DataTypes.STRING,
-      defaultValue: null
+      defaultValue: false
     },
     monday: {
       type: DataTypes.STRING

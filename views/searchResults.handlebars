@@ -25,11 +25,11 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6 order-md-2">
+    <div class="col-md-8 order-md-2">
         <div class="search">
-            <div class="container">
+            <div class="container result-container">
                 <div class="row">
-                    <div class="row" style="width: 35rem ;">
+                    {{!-- <div class="row" style="width: 35rem ;">
                         <img class="card-img-x" src="../../img/Mary_Poppins.jpg" alt="Mary" width="100" height="150">
                         <div class="col-md-8" style="float-right;">
                             <h5 class="card-title">Bio</h5>
@@ -41,15 +41,15 @@
                                 <i class="fas fa-envelope-square"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6 order-md-1">
+    <div class="col-md-4 order-md-1">
         <div class="row center-content">
             <aside class="col-sm-4" ;>
-                <p>Days & Times</p>
+                <p class="dateTime">Days & Times</p>
 
 
                 <div class="card" style="width: 15rem;">
@@ -61,43 +61,43 @@
                             <div class="card-body">
                                 <form>
                                     <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
+                                        <input class="form-check-input" type="checkbox" value="mon" id="monDay">
                                         <span class="form-check-label">
                                             Mon
                                         </span>
                                     </label> <!-- form-check.// -->
                                     <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
+                                        <input class="form-check-input" type="checkbox" value="tues"id="tuesDay">
                                         <span class="form-check-label">
                                             Tues
                                         </span>
                                     </label> <!-- form-check.// -->
                                     <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
+                                        <input class="form-check-input" type="checkbox" value="wed" id="wensDay">
                                         <span class="form-check-label">
                                             Weds
                                         </span>
                                     </label>
                                     <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
+                                        <input class="form-check-input" type="checkbox" value="thurs" id="thursDay">
                                         <span class="form-check-label">
                                             Thurs
                                         </span>
                                     </label>
                                     <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
+                                        <input class="form-check-input" type="checkbox" value="fri" id="friDay">
                                         <span class="form-check-label">
                                             Fri
                                         </span>
                                     </label>
                                     <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
+                                        <input class="form-check-input" type="checkbox" value="sat" id="saturDay">
                                         <span class="form-check-label">
                                             Sat
                                         </span>
                                     </label>
                                     <label class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="">
+                                        <input class="form-check-input" type="checkbox" value="sun" id="sunDay">
                                         <span class="form-check-label">
                                             Sun
                                         </span>
@@ -119,13 +119,14 @@
                                     <label id="mornAftnLabel" for="mornAftn">Morn/Aftn</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="mornAftn" name="drone" value="mornAftn">
-                                    <label id="mornAftnLabel" for="mornAftn">Nights</label>
+                                    <input type="radio" id="nights" name="drone" value="night">
+                                    <label id="nights" for="nights">Nights</label>
                                 </div>
                                 <div>
-                                    <input type="radio" id="mornAftn" name="drone" value="mornAftn">
-                                    <label id="mornAftnLabel" for="mornAftn">Both</label>
+                                    <input type="radio" id="both" name="drone" value="both">
+                                    <label id="both" for="both">Both</label>
                                 </div>
+                                <a href="#" id="submit" class="btn btn-primary">Submit</a>
                             </div> <!-- card-body.// -->
                         </div>
                     </article> <!-- card-group-item.// -->
@@ -134,18 +135,55 @@
         </div>
     </div>
 </div>
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
+<script type="text/javascript">
 
+function submit() 
+{
+    var obj;
 
+    var radioValue = $("input[name='drone']:checked").val();
 
+    obj = {
+        type: radioValue,
+        monday: $("#monDay").is(":checked"),
+        tuesday: $("#tuesDay").is(":checked"),
+        wensday: $("#wensDay").is(":checked"),
+        thursday: $("#thursDay").is(":checked"),
+        friday: $("#friDay").is(":checked"),
+        saturday: $("#saturDay").is(":checked"),
+        sunday: $("#sunDay").is(":checked")
+    }
 
-{{!-- </div>
-            <div class="row">
-                <div class="col-lg-6">
+    console.log(obj);
+    console.log(window.location.pathname + "/query")
 
-                </div> --}}
+     $.ajax({
+        type: "POST",
+        url: window.location.href + "/query",
+        data: obj,
+        dataType: "JSON"
+    }).then(function (data) {
+        console.log(data);
+        
+        for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            $('<div class= "row" style = "width: 35rem ;" > <img class="card-img-x" src=' + element.profilePicture + ' alt="" width="100" height="150"> <div class="col-md-8" style="float-right;"> <h5 class="card-title">Bio</h5> <p class="card-text">`+ element.bio + ` </p> <a href="#" class="btn btn-primary">Learn More</a> <a class="btn btn-large btn-primary logout" href="#"> <i class="fas fa-envelope-square"></i> </a> </div> </div>').appendTo($(".result-container"));
+        }
+        
+    })
+}
 
-{{!-- 
-        </div>
-    </div>
+jQuery("#submit").on("click", function(){
+    submit()
+})
 
-</div> --}}
+</script>

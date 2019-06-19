@@ -1,4 +1,14 @@
 var db = require("../models");
+var distance = require("./../scripts/distance");
+var axios = require("axios");
+
+var authCheck = function(req, res, next) {
+  if (!req.user) {
+    res.redirect("/");
+  } else {
+    next();
+  }
+};
 
 module.exports = function(app) {
   // Load index page
@@ -19,7 +29,6 @@ module.exports = function(app) {
       });
     });
   });
-
 
   app.get("/availability", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
@@ -56,6 +65,12 @@ module.exports = function(app) {
     });
   });
 
+  app.post("/search/query", function(req, res) {
+    distance.getAllCloseBy("98023", function(res2) {
+      console.log(res2);
+      res.json(res2);
+    });
+  });
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");

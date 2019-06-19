@@ -11,7 +11,7 @@ passport.serializeUser(function(user, done) {
 //When the client makes a request to our server, we can take the id they send to us and
 //grab all the data related to that user with this.
 passport.deserializeUser(function(id, done) {
-  db.Example.findOne({ where: { id: id } }).then(function(user) {
+  db.Nanny.findOne({ where: { id: id } }).then(function(user) {
     if (user) {
       done(null, user);
     }
@@ -30,7 +30,7 @@ passport.use(
       //Passport Callback Function
       console.log(profile);
       //TODO: Change dbExamole to our actual database.
-      db.Example.findOne({ where: { googleID: profile.id } }).then(function(
+      db.Nanny.findOne({ where: { googleId: profile.id } }).then(function(
         user
       ) {
         if (user) {
@@ -38,9 +38,9 @@ passport.use(
           console.log("Logging in with existing user");
           done(null, user);
         } else {
-          db.Example.create({
-            googleID: profile.id,
-            googleName: profile.displayName
+          db.Nanny.create({
+            googleId: profile.id,
+            name: profile.displayName
           }).then(function(newUser) {
             done(null, newUser);
           });

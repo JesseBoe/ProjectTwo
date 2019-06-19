@@ -1150,7 +1150,7 @@ fieldset:disabled a.btn {
 }
 
 .center-content {
-  padding-left: 25%;
+  padding-left: 32%;
 }
 
 .card-img-x {
@@ -1159,3 +1159,9 @@ fieldset:disabled a.btn {
   border-radius: 25% 10%;
 }
 
+<<<<<<< HEAD
+.dateTime {
+  white-space: nowrap;
+}
+=======
+>>>>>>> 5932c463ca2d5a0a05d277b471e57ef1e77329a6
